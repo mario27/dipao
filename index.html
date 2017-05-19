@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Inicio de Sesión</title>
+	<link rel="shortcut icon" href="resources/img/fondo-dipao.png">
+	<link type="text/css" rel="stylesheet" href="resources/css/materialize.css"/>
+	<link type="text/css" rel="stylesheet" href="resources/css/materialize.min.css"/>
+	<link type="text/css" rel="stylesheet" href="resources/css/styles.css"/>
+  	<script type="text/javascript" src="resources/js/jquery-2.2.3.min.js"></script>
+  	<script type="text/javascript" src="resources/js/materialize.js"></script>
+  	<script type="text/javascript" src="resources/js/materialize.min.js"></script>
+  	<script type="text/javascript" src="resources/js/jquery.validate.min.js"></script>
+    <style>
+      .card-header{
+        background-color: #34495E;
+        color:white !important;
+        text-align: center;
+      }
+    </style>
+</head>
+<body>
+ <div class="row">
+  <div class="col s12 m8 offset-m2 l6 offset-l3" style="padding: 80px 8%;">
+    <div class="card z-depth-5">
+      <div class="card-content white-text card-header" style="padding: 5px 5px;">
+        <h5><b><i class="material-icons">lock</i> Inicio</b></h5>
+      </div>
+      <div class="card-action" style="padding:30px 50px;">
+       <form id="form_login">
+          <div class="input-field">
+            <input type="text" id="usrname" name="usrname" placeholder="Ingresa tu usuario">
+            <label for="usrname"><i class="material-icons">perm_identity</i> Usuario</label>
+          <div class="input-field">
+            <input type="text" id="psw" name="psw" placeholder="Ingresa tu contraseña">
+            <label for="psw"><i class="material-icons">visibility</i> Contraseña</label>
+          </div>
+          
+        <a class="btn btn-block" id="enviar"><span class="glyphicon glyphicon-off"></span> Iniciar</a>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+	<script type="text/javascript">
+        $(document).ready(function(){
+          
+        });
+    </script>
+</html>
