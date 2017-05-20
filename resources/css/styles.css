@@ -80,9 +80,6 @@
 nav .button-collapse{
   margin: 0px;
 }
-.dropdown-content li > a, .dropdown-content li > span{
-  color: #dd7008;
-}
 .dropdown-content li > a > i {
   margin-right: 10px;
 }

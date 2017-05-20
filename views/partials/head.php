@@ -57,10 +57,10 @@
           <a href="" class="dropdown-button hov tooltipped" data-activates='dropdown1' data-position="bottom" data-delay="50" data-tooltip="Configuraciones"><i class="material-icons">settings</i></a>
         </li>
         <ul id='dropdown1' class='dropdown-content'>
-          <li><a href="#!">Perfil</a></li>
-          <li><a href="#!">Otros</a></li>
+          <li><a href="#!" style="color: #dd7008;">Perfil</a></li>
+          <li><a href="#!" style="color: #dd7008;">Otros</a></li>
           <li class="divider"></li>
-          <li><a href="#!"><i class="material-icons">settings_power</i>Salir</a></li>         
+          <li><a href="#!" style="color: #dd7008;"><i class="material-icons">settings_power</i>Salir</a></li>         
           </ul>
       </ul>
       <ul class="side-nav" id="mobile-demo" style="opacity:.9;">
