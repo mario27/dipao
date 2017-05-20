@@ -41,7 +41,7 @@
 </head>
 <body class="b-footer">
 	  <nav>
-    <div class="nav-wrapper" style="background-color: #0D163C; background-image: url(../../resources/img/nav01.png">
+    <div class="nav-wrapper" style="background-color: #0D163C; background-image: url(../../resources/img/nav01.png)">
       <a href="#!" class="brand-logo hide-on-med-and-up">DIPAO</a>
       <ul>
       <li><a href="#" data-activates="mobile-demo" class="button-collapse hov"><i class="material-icons">menu</i></a></li>

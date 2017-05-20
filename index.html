@@ -13,40 +13,71 @@
   	<script type="text/javascript" src="resources/js/jquery.validate.min.js"></script>
     <style>
       .card-header{
-        background-color: #34495E;
+        background-color: #0D163C; 
+        background-image: url(resources/img/nav01.png);
         color:white !important;
         text-align: center;
       }
     </style>
 </head>
 <body>
- <div class="row">
-  <div class="col s12 m8 offset-m2 l6 offset-l3" style="padding: 80px 8%;">
-    <div class="card z-depth-5">
-      <div class="card-content white-text card-header" style="padding: 5px 5px;">
-        <h5><b><i class="material-icons">lock</i> Inicio</b></h5>
-      </div>
-      <div class="card-action" style="padding:30px 50px;">
-       <form id="form_login">
-          <div class="input-field">
-            <input type="text" id="usrname" name="usrname" placeholder="Ingresa tu usuario">
-            <label for="usrname"><i class="material-icons">perm_identity</i> Usuario</label>
-          <div class="input-field">
-            <input type="text" id="psw" name="psw" placeholder="Ingresa tu contraseña">
-            <label for="psw"><i class="material-icons">visibility</i> Contraseña</label>
-          </div>
-          
-        <a class="btn btn-block" id="enviar"><span class="glyphicon glyphicon-off"></span> Iniciar</a>
-      </form>
+  <div class="row">
+    <div class="col s12 m8 offset-m2 l6 offset-l3" style="padding: 80px 8%;">
+      <div class="card z-depth-5">
+        <div class="card-content white-text card-header" style="padding: 5px 5px;">
+          <h5><b><i class="material-icons">lock</i> Inicio</b></h5>
+        </div>
+        <div class="card-action">
+          <form id="form_login">
+            <div class="row" novalidate="novalidate">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">perm_identity</i>
+                <input type="text" id="usrname" name="usrname" placeholder="Ingresa tu usuario">
+                <label for="usrname">Usuario</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons prefix">visibility</i>
+                <input type="text" id="psw" name="psw" placeholder="Ingresa tu contraseña">
+                <label for="psw">Contraseña</label>
+              </div>
+              <div class="input-field col s12">
+                <a class="btn btn-block" id="enviar" style="background: #eaa110; background-image: url(resources/img/nav8.png);"><b><i class="material-icons">power_settings_new</i> Iniciar</b></a>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
 </body>
-	<script type="text/javascript">
-        $(document).ready(function(){
-          
-        });
-    </script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#enviar").click(function(event)
+      {
+        $("#form_login").submit();
+      });
+
+      $("#form_login").validate({
+          rules:{
+              usrname: {
+                required: true,
+                rangelength: [3, 10]
+              },
+              psw: "required"
+            },
+          errorClass: 'invalid',
+          validClass: "valid",
+          errorPlacement: function (error, element) {
+              $(element)
+                  .closest("form")
+                  .find("label[for='" + element.attr("id") + "']")
+                  .attr('data-error', error.text());
+          },
+          submitHandler: function (form) {
+              console.log('form ok');
+          }
+      });
+
+    });
+  </script>
 </html>
