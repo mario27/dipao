@@ -11,8 +11,8 @@
     </ul>
   </nav>
 
-  <div class="row" style="margin-top: 5px;">
-    <div class="col s12 m8 l9 grey lighten-3" style="height: 100%;">
+  <div class="row" style="padding-top: 5px">
+    <div class="col s12 m8 l9 grey lighten-3">
       <div id="test1" class="col s12">Opción 1</div>
       <div id="test2" class="col s12">Opción 2</div>
       <div id="test3" class="col s12">Opción 3</div>
