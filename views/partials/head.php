@@ -7,7 +7,14 @@
 	<link type="text/css" rel="stylesheet" href="../../resources/css/materialize.css"/>
 	<link type="text/css" rel="stylesheet" href="../../resources/css/materialize.min.css"/>
 	<link type="text/css" rel="stylesheet" href="../../resources/css/styles.css"/>
+  <link type="text/css" rel="stylesheet" href="../../resources/css/jquery.dataTables.min.css"/>
+  <link type="text/css" rel="stylesheet" href="../../resources/css/dataTables.material.min.css"/>
+  <link type="text/css" rel="stylesheet" href="../../resources/css/responsive.dataTables.min.css"/>
+
 	<script type="text/javascript" src="../../resources/js/jquery-2.2.3.min.js"></script>
+  <script type="text/javascript" src="../../resources/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../resources/js/dataTables.material.min.js"></script>  
+  <script type="text/javascript" src="../../resources/js/dataTables.responsive.min.js"></script>
 	<script type="text/javascript" src="../../resources/js/materialize.js"></script>
 	<script type="text/javascript" src="../../resources/js/materialize.min.js"></script>
 	<script type="text/javascript" src="../../resources/js/jquery.validate.min.js"></script> 
@@ -47,7 +54,7 @@
       <li><a href="#" data-activates="mobile-demo" class="button-collapse hov"><i class="material-icons">menu</i></a></li>
       </ul>
       <ul class="left hide-on-small-and-down">
-         <li class="press activa"><a href="#" class="hov"><b><i class="material-icons right">shopping_cart</i>Productos</b></a></li>
+         <li class="press activa"><a href="#" class="hov"><b><i class="material-icons right">receipt</i>Registros</b></a></li>
          <li class="press"><a href="#" class="hov"><b><i class="material-icons right">add_shopping_cart</i>Pedidos</b></a></li>
          <li class="press"><a href="#" class="hov"><b><i class="material-icons right">room_service</i>Requisiciones</b></a></li>
          <li class="press"><a href="#" class="hov"><b><i class="material-icons right">assignment</i>Reportes</b></a></li>
