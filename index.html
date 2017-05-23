@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Inicio de Sesión</title>
-	<link rel="shortcut icon" href="resources/img/fondo-dipao.png">
-	<!-- <link type="text/css" rel="stylesheet" href="resources/css/materialize.css"/> -->
-	<link type="text/css" rel="stylesheet" href="resources/css/materialize.min.css"/>
-	<link type="text/css" rel="stylesheet" href="resources/css/styles.css"/>
-  	<script type="text/javascript" src="resources/js/jquery-2.2.3.min.js"></script>
-  	<!-- <script type="text/javascript" src="resources/js/materialize.js"></script> -->
-  	<script type="text/javascript" src="resources/js/materialize.min.js"></script>
-  	<script type="text/javascript" src="resources/js/jquery.validate.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Inicio de Sesión</title>
+  <link rel="shortcut icon" href="resources/img/fondo-dipao.png">
+  <!-- <link type="text/css" rel="stylesheet" href="resources/css/materialize.css"/> -->
+  <link type="text/css" rel="stylesheet" href="resources/css/materialize.min.css"/>
+  <link type="text/css" rel="stylesheet" href="resources/css/styles.css"/>
+    <script type="text/javascript" src="resources/js/jquery-2.2.3.min.js"></script>
+    <!-- <script type="text/javascript" src="resources/js/materialize.js"></script> -->
+    <script type="text/javascript" src="resources/js/materialize.min.js"></script>
+    <script type="text/javascript" src="resources/js/jquery.validate.min.js"></script>
     <style>
       .card-header{
         background-color: #0D163C; 
@@ -21,6 +21,7 @@
     </style>
 </head>
 <body>
+<div style="display:none" id="cont_request"></div>
   <div class="row">
     <div class="col s12 m8 offset-m2 l6 offset-l3" style="padding: 80px 8%;">
       <div class="card z-depth-5">
@@ -37,7 +38,7 @@
               </div>
               <div class="input-field col s12">
                 <i class="material-icons prefix">visibility</i>
-                <input type="text" id="psw" name="psw" placeholder="Ingresa tu contraseña">
+                <input type="password" id="psw" name="psw" placeholder="Ingresa tu contraseña">
                 <label for="psw">Contraseña</label>
               </div>
               <div class="input-field col s12">
@@ -58,24 +59,29 @@
       });
 
       $("#form_login").validate({
-          rules:{
-              usrname: {
-                required: true,
-                rangelength: [3, 10]
-              },
-              psw: "required"
-            },
-          errorClass: 'invalid',
-          validClass: "valid",
-          errorPlacement: function (error, element) {
-              $(element)
-                  .closest("form")
-                  .find("label[for='" + element.attr("id") + "']")
-                  .attr('data-error', error.text());
+        rules:{
+          usrname: {
+            required: true,
+            rangelength: [3, 10]
           },
-          submitHandler: function (form) {
-              console.log('form ok');
-          }
+          psw: "required"
+        },
+        errorClass: 'invalid',
+        validClass: "valid",
+        errorPlacement: function (error, element) {
+          $(element)
+            .closest("form")
+            .find("label[for='" + element.attr("id") + "']")
+            .attr('data-error', error.text());
+        },
+        submitHandler: function (form) {
+          var usrname=$("#form_login #usrname").val();
+          var psw=$("#form_login #psw").val();
+
+          $.post('core/controllers/usuarios_controller.php',{usrname:usrname,psw:psw,action:"sesion"},function(request){
+              $("#cont_request").html(request); 
+          });
+        }
       });
 
     });
