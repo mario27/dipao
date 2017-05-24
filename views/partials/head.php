@@ -48,27 +48,31 @@
 </head>
 <body class="b-footer">
 	  <nav>
-    <div class="nav-wrapper" style="background-color: #0D163C; background-image: url(../../resources/img/nav01.png)">
-      <a href="#!" class="brand-logo hide-on-med-and-up">DIPAO</a>
-      <ul>
-      <li><a href="#" data-activates="mobile-demo" class="button-collapse hov"><i class="material-icons">menu</i></a></li>
-      </ul>
+    <div class="nav-wrapper hide-on-small-and-down" style="background-color: #0D163C; background-image: url(../../resources/img/navi2.png">
+
       <ul class="left hide-on-small-and-down">
-         <li class="press activa"><a href="#" class="hov"><b><i class="material-icons right">receipt</i>Registros</b></a></li>
-         <li class="press"><a href="#" class="hov"><b><i class="material-icons right">add_shopping_cart</i>Pedidos</b></a></li>
-         <li class="press"><a href="#" class="hov"><b><i class="material-icons right">room_service</i>Requisiciones</b></a></li>
-         <li class="press"><a href="#" class="hov"><b><i class="material-icons right">assignment</i>Reportes</b></a></li>
+         <li class="press activa"><a href="#" class="hov "><b><i class="material-icons right">shopping_cart</i>Productos</b></a></li>
+         <li class="press"><a href="#" class="hov "><b><i class="material-icons right">add_shopping_cart</i>Pedidos</b></a></li>
+         <li class="press"><a href="#" class="hov "><b><i class="material-icons right">room_service</i>Requisiciones</b></a></li>
+         <li class="press"><a href="#" class="hov "><b><i class="material-icons right">assignment</i>Reportes</b></a></li>
       </ul>
       <ul class="right">
         <li>
           <a href="" class="dropdown-button hov tooltipped" data-activates='dropdown1' data-position="bottom" data-delay="50" data-tooltip="Configuraciones"><i class="material-icons">settings</i></a>
         </li>
         <ul id='dropdown1' class='dropdown-content'>
-          <li><a href="#!" style="color: #dd7008;">Perfil</a></li>
-          <li><a href="#!" style="color: #dd7008;">Otros</a></li>
+          <li><a href="#!">Perfil</a></li>
+          <li><a href="#!">Otros</a></li>
           <li class="divider"></li>
-          <li><a href="#!" style="color: #dd7008;"><i class="material-icons">settings_power</i>Salir</a></li>         
+          <li><a href="#!"><i class="material-icons">settings_power</i>Salir</a></li>         
           </ul>
+      </ul>
+    </div>
+
+     <div class="nav-wrapper hide-on-med-and-up" style="background-color: #0D163C; background-image: url(../../resources/img/nav01.png">
+     <a href="#!" class="brand-logo hide-on-med-and-up">DIPAO</a>
+      <ul>
+      <li><a href="#" data-activates="mobile-demo" class="button-collapse hov"><i class="material-icons">menu</i></a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo" style="opacity:.9;">
         <li class="hov1"><a class="black-text" href="#"><i class="material-icons right black-text">shopping_cart</i>Productos</a></li>
