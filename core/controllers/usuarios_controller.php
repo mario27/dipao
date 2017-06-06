@@ -64,6 +64,34 @@
 					<?php
 				}
 			break;
+
+			case 'insertar_usuario':
+			$con=$_POST['con'];
+			$nom=$_POST['nom'];
+			$pass = password_hash($con, PASSWORD_BCRYPT);
+			$data_pass= array('nom'=>$nom,'pass'=>$pass);
+			$usua->set($data_pass);
+				# code...
+			break;
+			
+			case 'regresar_usuario':
+			$con1=$_POST['con1'];
+			$f=$usua->edit();
+			$x=json_decode($f, true);
+			$con2=$x[0]['contrasena'];
+
+			if(password_verify($con1, $con2)) 
+			{
+			    print_r(1);
+			} 
+			else 
+			{
+			    print_r(2);
+			    //print_r($con2); 
+			}
+
+			break;
+
 			default:
 				echo "Creo que ha ocurrido un error";
 			break;

@@ -19,13 +19,28 @@ require_once('conexion.php');
 			return true;
 		return false;
 	}
-	public function set() {
+	public function set($data_pass=array()) 
+    {
 
-	}
+            foreach ($data_pass as $campo => $value): 
+            $$campo = $value;
+            endforeach;
 
-	public function edit() {
-	
-	}
+        $this->query="insert into usuarios values(0,'".$nom."','".$pass."',2,3)";
+        $this->execute_single_query();
+
+    }
+
+    public function edit() 
+    {
+        $this->query="select contrasena from usuarios u, tipo_usuario t where t.id_tipou=u.id_tipou and des_tipou='Root'";
+        return $this->get_results_from_query();
+    
+    }
+
+    public function arreglos() {
+    
+    }
 
 	public function delete() {
 	}
