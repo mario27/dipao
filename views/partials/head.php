@@ -10,11 +10,13 @@
   <link type="text/css" rel="stylesheet" href="../../resources/css/jquery.dataTables.min.css"/>
   <link type="text/css" rel="stylesheet" href="../../resources/css/dataTables.material.min.css"/>
   <link type="text/css" rel="stylesheet" href="../../resources/css/responsive.dataTables.min.css"/>
+  <link type="text/css" rel="stylesheet" href="../../resources/css/rowGroup.dataTables.min.css"/>
 
 	<script type="text/javascript" src="../../resources/js/jquery-2.2.3.min.js"></script>
   <script type="text/javascript" src="../../resources/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="../../resources/js/dataTables.material.min.js"></script>  
   <script type="text/javascript" src="../../resources/js/dataTables.responsive.min.js"></script>
+  <script type="text/javascript" src="../../resources/js/dataTables.rowGroup.min.js"></script>
 	<script type="text/javascript" src="../../resources/js/materialize.js"></script>
 	<script type="text/javascript" src="../../resources/js/materialize.min.js"></script>
 	<script type="text/javascript" src="../../resources/js/jquery.validate.min.js"></script> 
@@ -51,7 +53,7 @@
     <div class="nav-wrapper hide-on-small-and-down" style="background-color: #0D163C; background-image: url(../../resources/img/navi2.png">
 
       <ul class="left hide-on-small-and-down">
-         <li class="press activa"><a href="#" class="hov "><b><i class="material-icons right">shopping_cart</i>Productos</b></a></li>
+         <li class="press activa"><a href="#" class="hov "><b><i class="material-icons right">receipt</i>Registros</b></a></li>
          <li class="press"><a href="#" class="hov "><b><i class="material-icons right">add_shopping_cart</i>Pedidos</b></a></li>
          <li class="press"><a href="#" class="hov "><b><i class="material-icons right">room_service</i>Requisiciones</b></a></li>
          <li class="press"><a href="#" class="hov "><b><i class="material-icons right">assignment</i>Reportes</b></a></li>
