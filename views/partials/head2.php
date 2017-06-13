@@ -22,13 +22,20 @@
 	<meta charset="UTF-8">
 	<title>Inicio</title>
 	<link rel="shortcut icon" href="../../resources/img/logo-dipao.png"> 
-	<link type="text/css" rel="stylesheet" href="../../resources/css/materialize.css"/>
+	<!-- <link type="text/css" rel="stylesheet" href="../../resources/css/materialize.css"/> -->
 	<link type="text/css" rel="stylesheet" href="../../resources/css/materialize.min.css"/>
 	<link type="text/css" rel="stylesheet" href="../../resources/css/styles.css"/>
+  <link type="text/css" rel="stylesheet" href="../../resources/css/jquery.dataTables.min.css"/>
+  <link type="text/css" rel="stylesheet" href="../../resources/css/dataTables.material.min.css"/>
+
+
 	<script type="text/javascript" src="../../resources/js/jquery-2.2.3.min.js"></script>
-	<script type="text/javascript" src="../../resources/js/materialize.js"></script>
+	<!-- <script type="text/javascript" src="../../resources/js/materialize.js"></script> -->
 	<script type="text/javascript" src="../../resources/js/materialize.min.js"></script>
 	<script type="text/javascript" src="../../resources/js/jquery.validate.min.js"></script> 
+  <script type="text/javascript" src="../../resources/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../resources/js/dataTables.material.min.js"></script> 
+
 	<script type="text/javascript">
       $(document).ready(function(){
       	$('.button-collapse').sideNav({
@@ -59,7 +66,7 @@
 </head>
 <body class="b-footer">
 	  <nav>
-    <div class="nav-wrapper" style="background-color: #0D163C; background-image: url(../../resources/img/nav01.png)">
+    <div class="nav-wrapper" style="background-color: #0D163C; background-image: url(../../resources/img/navi2.png)">
       <a href="#!" class="brand-logo hide-on-med-and-up">DIPAO</a>
       <ul>
       <li><a href="#" data-activates="mobile-demo" class="button-collapse hov"><i class="material-icons">menu</i></a></li>
@@ -68,6 +75,7 @@
          <li class="press activa"><a href="#" class="hov"><b><i class="material-icons right">shopping_cart</i>Requisición</b></a></li>
          <li class="press"><a href="#" class="hov"><b><i class="material-icons right">add_shopping_cart</i>Pedidos</b></a></li>
          <li class="press"><a href="#" class="hov"><b><i class="material-icons right">assignment</i>Inventario</b></a></li>
+         <li class="press"><a href="#" class="hov"><b><i class="material-icons right">store</i>Reportes</b></a></li>
       </ul>
       <ul class="right">
         <li>

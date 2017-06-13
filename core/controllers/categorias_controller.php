@@ -26,7 +26,17 @@
 				$val=3;
 				print_r($categoria->get_all($val,$dato_categoria));
 			break;
-
+			case 'equivalencia':
+				$producto_id=$_POST["producto_id"];
+				$categoria=new categoria();
+				print_r($categoria->get($producto_id));
+			break;
+			case 'insertar_requi':
+				$producto_id=$_POST["producto_id"];
+				
+				$categoria=new categoria();
+				print_r($categoria->set($producto_id));
+			break;
 			default:
 				echo "Creo que ha ocurrido un error";
 			break;

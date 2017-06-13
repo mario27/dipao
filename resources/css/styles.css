@@ -91,8 +91,15 @@ nav .button-collapse{
    .input-field input[type=text]:focus + label {
      color: #000;
    }
+   .input-field input[type=password]:focus + label {
+     color: #000;
+   }
    /* label underline focus color */
    .input-field input[type=text]:focus {
+     border-bottom: 1px solid orange;
+     box-shadow: 0 1px 0 0 orange;
+   }
+   .input-field input[type=password]:focus {
      border-bottom: 1px solid orange;
      box-shadow: 0 1px 0 0 orange;
    }
@@ -101,8 +108,16 @@ nav .button-collapse{
      border-bottom: 1px solid green;
      box-shadow: 0 1px 0 0 green;
    }
+   .input-field input[type=password].valid {
+     border-bottom: 1px solid green;
+     box-shadow: 0 1px 0 0 green;
+   }
    /* invalid color */
    .input-field input[type=text].invalid {
+     border-bottom: 1px solid red;
+     box-shadow: 0 1px 0 0 red;
+   }
+   .input-field input[type=password].invalid {
      border-bottom: 1px solid red;
      box-shadow: 0 1px 0 0 red;
    }
@@ -169,4 +184,76 @@ nav .button-collapse{
 .color_guinda
 {
   background: #eaa110;
+}
+/*/////////////////////////////////////////////*/
+.element-item {
+  border:solid black 1px;
+  position: relative;
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin: 2px;
+  padding: 10px;
+  background: #FCEEE2;
+  color: #262524;
+}
+
+.element-item > * {
+  margin: 0;
+  padding: 0;
+}
+.element-item .name {
+  /*position: absolute;*/
+  text-align: center;
+  left: 0px;
+  top: 10px;
+  line-height: 15px;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+}
+.element-item .symbol {
+  position: absolute;
+  left: 5px;
+  top: 60px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+
+
+/*.element-item .number {
+  position: absolute;
+  right: 8px;
+  top: 5px;
+}*/
+
+.element-item .weight {
+  position: absolute;
+  left: 5px;
+  top: 76px;
+  font-size: 12px;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.seleccionada{
+  background: teal;
+}
+.seleccionada label{
+  color: white;
+}
+
+
+
+.checkbox-color.filled-in[type="checkbox"] + label:after{
+    border: 2px solid orange;
+    background: white;
+}
+.checkbox-color.filled-in[type="checkbox"]:checked + label:after{
+    background: black;
+}
+[type="checkbox"] + label {
+  padding-left: 28px;
 }
