@@ -14,6 +14,7 @@
 				if ($usua->get_all($usrname,$psw))
 				{
 					$usua->get($usrname,$psw);
+					
 					if ($usua->id_tipou==1) 
 					{
 						require_once('../BD/empleados_model.php');
@@ -40,12 +41,14 @@
 						$empleados=new Empleado();
 						$datos_empleados=$empleados->get($usua->id_empleado);
 						$datos_empleados=$datos_empleados[0];
-						$_SESSION["sesion_ok"]=true;
 
+						$_SESSION["sesion_ok"]=true;
+						$_SESSION["id_usuario"]=$usua->id_usuario;
 						$_SESSION["id_empleado"]=$datos_empleados["id_empleado"];
 						$_SESSION["nombre"]=$datos_empleados["nombre"];
 						$_SESSION["ap"]=$datos_empleados["ap"];
 						$_SESSION["am"]=$datos_empleados["am"];
+
 						?>
 							<script type="text/javascript">
 								Materialize.toast("Bienvenido",1500,'',function(){

@@ -10,6 +10,8 @@
   }
   else
   {
+    $id_usuario=$_SESSION["id_usuario"];
+    $id_empleado=$_SESSION["id_empleado"];
     $nombre=$_SESSION["nombre"];
     $ap=$_SESSION["ap"];
     $am=$_SESSION["am"];
@@ -85,7 +87,7 @@
           <li><a href="#!" style="color: #dd7008;">Perfil</a></li>
           <li><a href="#!" style="color: #dd7008;">Otros</a></li>
           <li class="divider"></li>
-          <li><a href="#!" style="color: #dd7008;"><i class="material-icons">settings_power</i>Salir</a></li>         
+          <li><a href="../../" style="color: #dd7008;"><i class="material-icons">settings_power</i>Salir</a></li>         
           </ul>
       </ul>
       <ul class="side-nav" id="mobile-demo" style="opacity:.9;">

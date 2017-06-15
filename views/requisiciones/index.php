@@ -105,10 +105,12 @@
 
   <script type="text/javascript">
     $(document).ready(function(){
+      var id_user=<?php echo $id_usuario; ?>;
       var n=[];
       var array=[];
       var array_registro=[];
       var cont=0; 
+      var cant_paq=0;
       $('#btn_enviar').attr('disabled', true);
       $('#btn_cerrar').attr('disabled', true);
       $('.modal').modal();
@@ -170,7 +172,7 @@
           {
             $.each(res, function(i,item,)
             {
-              html+="<a href='#' id='btn-producto' data-id="+item.id_producto+" data-existenciam="+item.existenciam+" data-existenciag="+item.existenciag+"  data-nombre='"+item.des_nombrep+"' data-marca='"+item.des_marca+"' data-paq='"+item.id_existe+"'><div class='element-item'><h3 class='name'>"+item.des_nombrep+"</h3><p class='symbol'>"+item.des_marca+"</p><p class='weight'>"+item.cantidad+" "+item.des_unidadm+"</p></div></a>";
+              html+="<a href='#' id='btn-producto' data-id="+item.id_producto+" data-existenciam="+item.existenciam+" data-existenciag="+item.existenciag+" data-existenciatotal="+item.existencia+" data-nombre='"+item.des_nombrep+"' data-marca='"+item.des_marca+"' data-paq='"+item.id_existe+"'><div class='element-item'><h3 class='name'>"+item.des_nombrep+"</h3><p class='symbol'>"+item.des_marca+"</p><p class='weight'>"+item.cantidad+" "+item.des_unidadmp+"</p></div></a>";
             });
           }
           $("#productos").html(html);
@@ -180,12 +182,14 @@
       $("#productos").on("click","a#btn-producto",function(event){
         var html="";
         var hp="";
+
         var data_id_producto=$(this).data("id");
         var nombre=$(this).data("nombre");
         var marca=$(this).data("marca");
         
         var exis=$(this).data("existenciam");
         var exisg=$(this).data("existenciag"); 
+        var exist=$(this).data("existenciatotal"); 
         
         var paquete=$(this).data("paq");
 
@@ -198,12 +202,13 @@
             res = JSON.parse(res);
             console.log(res);
             html="";
-              // $.each(res, function(i, item)
-              // {
-              //   html+="<a class='btn btn-large' id='btn-subcategoria' data-id='"+item.id_subcategoria+"' style='background:"+color+"; width: 206px; margin: 2px 2px 2px 2px; padding-left: 1px; padding-right: 1px;'>"+item.des_subcategoria+"</a>";
-              // });
+            $.each(res, function(i, item)
+            {
+              cant_paq=item.cantidad;
+            });
           });
         }
+
         //la variable exis contiene la existencia del producto seleccionado
         // alert(nombre);
         
@@ -217,14 +222,14 @@
         {
           cont++;//se crea un contador para identificar las filas agregadas a la tabla y se incrementa cada vez que se selecciona el producto.
           
-          if (n[data_id_producto]>exis)
+          if (n[data_id_producto]>exist)
           {
             alert("La existencia de este producto llego a 0");  
           }
           else
           {
             n[data_id_producto]=n[data_id_producto]+1;
-          }
+          } 
 
 
           array.push(data_id_producto);//se agrega el nombre del producto seleccionado al arreglo
@@ -235,13 +240,13 @@
 
           html+="<td style='padding:0px; width:1px;'><input readonly='true' type='text' value='"+n[data_id_producto]+"' id='valor"+data_id_producto+"' style='text-align: center; width: 32px; height: 27px; margin-bottom: 0px;'></td>";
           
-          html+="<td style='padding:0px; width:1px;'><a href='#' class='btn green' data-id='"+data_id_producto+"' data-tot='"+exis+"' data-exisg='"+exisg+"' id='id_mas' style='padding-right:5px; padding-left:5px; padding-top:0px;'><i class='material-icons'>add</i></a></td>";
+          html+="<td style='padding:0px; width:1px;'><a href='#' class='btn green' data-id='"+data_id_producto+"' data-tot='"+exis+"' data-exisg='"+exisg+"' data-exist='"+exist+"' id='id_mas' style='padding-right:5px; padding-left:5px; padding-top:0px;'><i class='material-icons'>add</i></a></td>";
 
           html+="<td class='celda' id='celda1"+data_id_producto+"' data-id='"+data_id_producto+"' data-nn='"+nombre+"' data-marca='"+marca+"' data-existencia='"+exis+"' style='padding:0px; padding-left:3px; text-align:left; line-height: 15px;'><label for='name'>"+nombre+" "+marca+"</label></td>";
 
           if (paquete==1) 
           {
-            html+="<td class='celda1' id='celda2"+data_id_producto+"' style='padding:0px; width:1px;'><input name='group"+data_id_producto+"' type='checkbox' class='filled-in checkbox-color checar' value='1' data-idd='"+data_id_producto+"' data-eg='"+exisg+"' data-em='"+exis+"' id='check_"+data_id_producto+"' /><label for='check_"+data_id_producto+"' style='height:15px;'></label></td>";
+            html+="<td class='celda1' id='celda2"+data_id_producto+"' style='padding:0px; width:1px;'><input name='group"+data_id_producto+"' type='checkbox' class='filled-in checkbox-color checar' value='1' data-idd='"+data_id_producto+"' data-eg='"+exisg+"' data-em='"+exist+"' id='check_"+data_id_producto+"' /><label for='check_"+data_id_producto+"' style='height:15px;'></label></td>";
           }
           else{
             html+="<td class='celda1' id='celda2"+data_id_producto+"' style='padding:0px; width:30px;'></td>";
@@ -257,15 +262,14 @@
           //la variable valor_ayuda contiene el nombre del id agragado al input del total de producto 
           var valor_ayuda="#valor"+data_id_producto;
           // alert(nombre+" ya existe")
-           var valor_ayuda="#valor"+data_id_producto;
+           // var valor_ayuda="#valor"+data_id_producto;
           n[data_id_producto]=parseInt($(valor_ayuda).val());//se obtiene el valor del input que tiene la cantidad de producto seleccionado.
           console.log(n[data_id_producto]);
           n[data_id_producto]+=1;
-          
           var va1=$("input[name='group"+data_id_producto+"']:checked").val();
           if(va1!=1)
           {
-            if(n[data_id_producto]>exis)
+            if(n[data_id_producto]>exist)
             {
               alert("La existencia de este producto llego a 0"); 
             }
@@ -344,7 +348,11 @@
         var da=$(this).data("id");
         var to=$(this).data("tot");
         var exisg=$(this).data("exisg");
+        var exist=$(this).data("exist");
         var sd="#valor"+da;
+
+        var tota=cant_paq*$(sd).val();
+        // alert(tota);
 
         var checke="#check_"+da;
 
@@ -355,7 +363,7 @@
         var va1=$("input[name='group"+da+"']:checked").val();
         if(va1!=1)
         {
-          if (n[da]>to) 
+          if (n[da]>exist) 
           {
             alert("La existencia de este producto llego a 0");  
           }
@@ -366,7 +374,11 @@
           }
         }
         else
-        {
+        { 
+          // if(tota>exist)
+          // {
+          //   alert("error "+tota)
+          // }
           if (n[da]>exisg) 
           {
             alert("La existencia de este producto llego a 0");  
@@ -445,33 +457,52 @@
         array.length=0;
         console.log(array);
         $(".fila").remove();
+        $('#btn_enviar').attr('disabled', true);
+        $('#btn_cerrar').attr('disabled', true);
       });
 //*ENVIAR-REQUI********************************************************************************************************
       $("#btn_enviar").click(function(){
         array_registro1=[];
         arr=[];
         arr1=[];
-        // array_registro=array;
+        va2=0;
+
         for(var i=0;i<array.length;i++)
         {
-          alert("se clickeo-"+array[i]);
           var valor_ayuda="#valor"+array[i];
-          // $(valor_ayuda).val();
-          array_registro.push(array);
+          arr.push($(valor_ayuda).val());
         }
-        console.log(array_registro);
-        // for(var j=0;j<array.length;j++)
-        // {
-        //   arr[j]=array[j]+","+array_registro[j];
-        //   console.log(arr[j]);
-        //   arr1.push(arr[j]);
-        // }
-        // console.log(arr1);
-        
-        // $.post('../../core/controllers/categorias_controller.php',{cat:cat,s:s,nombre:nombre,act:"insertar_requi"},function(request)
-        // {
-        //     Materialize.toast('Datos ingresados', 1500);        
-        // });
+
+        for(var j=0;j<array.length;j++)
+        {
+          var conn="#check_"+array[j];
+          if($(conn).prop('checked')){va2=1;}else{va2=0;}
+          array_registro1.push(va2);
+        }
+
+
+        for(var k=0;k<array.length;k++)
+        {
+          array_registro.push(array[k]);
+          array_registro.push(arr[k]);
+          array_registro.push(id_user,array_registro1[k]);
+
+          arr1.push(array_registro);
+          array_registro=[];
+          // console.log(arr1);
+        }
+
+        console.log(arr1);
+                
+        $.post('../../core/controllers/categorias_controller.php',{arr1:arr1,action:"insertar_requi"},function(request)
+        {
+          Materialize.toast("Registro Exitoso",2500);
+        });
+        array.length=0;
+        console.log(array);
+        $(".fila").remove();
+        $('#btn_enviar').attr('disabled', true);
+        $('#btn_cerrar').attr('disabled', true);
       });
 //*********************************************************************************************************************
     });

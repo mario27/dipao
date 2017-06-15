@@ -32,10 +32,10 @@
 				print_r($categoria->get($producto_id));
 			break;
 			case 'insertar_requi':
-				$producto_id=$_POST["producto_id"];
+				$arr1=$_POST["arr1"];
 				
 				$categoria=new categoria();
-				print_r($categoria->set($producto_id));
+				print_r($categoria->set($arr1));	
 			break;
 			default:
 				echo "Creo que ha ocurrido un error";
