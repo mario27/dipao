@@ -72,6 +72,16 @@
         <tbody>
 
         </tbody>
+        <!-- <thead>
+          <tr>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+              <th>6</th>
+          </tr>
+        </thead> -->
       </table>
       <div id="botones"></div>
     </div>
@@ -236,23 +246,23 @@
 
           // alert(cont);
           html+="<tr id='fila"+cont+"' class='fila'>";
-          html+="<td style='padding:0px; width:1px;'><a href='#' class='btn green' data-id='"+data_id_producto+"' id='id_menos' style='padding-right:5px; padding-left:5px; padding-top:0px;'><i class='material-icons'>remove</i></a></td>";
+          html+="<td style='padding:5px 0px; width:1px;'><a href='#' class='btn green' data-id='"+data_id_producto+"' id='id_menos' style='padding-right:5px; padding-left:5px; padding-top:0px;'><i class='material-icons'>remove</i></a></td>";
 
-          html+="<td style='padding:0px; width:1px;'><input readonly='true' type='text' value='"+n[data_id_producto]+"' id='valor"+data_id_producto+"' style='text-align: center; width: 32px; height: 27px; margin-bottom: 0px;'></td>";
+          html+="<td style='padding:5px 0px; width:1px;'><input readonly='true' type='text' value='"+n[data_id_producto]+"' id='valor"+data_id_producto+"' style='text-align: center; width: 32px; height: 27px; margin-bottom: 0px;'></td>";
           
-          html+="<td style='padding:0px; width:1px;'><a href='#' class='btn green' data-id='"+data_id_producto+"' data-tot='"+exis+"' data-exisg='"+exisg+"' data-exist='"+exist+"' id='id_mas' style='padding-right:5px; padding-left:5px; padding-top:0px;'><i class='material-icons'>add</i></a></td>";
+          html+="<td style='padding:5px 0px; width:1px;'><a href='#' class='btn green' data-id='"+data_id_producto+"' data-tot='"+exis+"' data-exisg='"+exisg+"' data-exist='"+exist+"' id='id_mas' style='padding-right:5px; padding-left:5px; padding-top:0px;'><i class='material-icons'>add</i></a></td>";
 
           html+="<td class='celda' id='celda1"+data_id_producto+"' data-id='"+data_id_producto+"' data-nn='"+nombre+"' data-marca='"+marca+"' data-existencia='"+exis+"' style='padding:0px; padding-left:3px; text-align:left; line-height: 15px;'><label for='name'>"+nombre+" "+marca+"</label></td>";
 
           if (paquete==1) 
           {
-            html+="<td class='celda1' id='celda2"+data_id_producto+"' style='padding:0px; width:1px;'><input name='group"+data_id_producto+"' type='checkbox' class='filled-in checkbox-color checar' value='1' data-idd='"+data_id_producto+"' data-eg='"+exisg+"' data-em='"+exist+"' id='check_"+data_id_producto+"' /><label for='check_"+data_id_producto+"' style='height:15px;'></label></td>";
+            html+="<td class='celda1' id='celda2"+data_id_producto+"' style='padding:5px 0px; width:1px;'><input name='group"+data_id_producto+"' type='checkbox' class='filled-in checkbox-color checar' value='1' data-idd='"+data_id_producto+"' data-eg='"+exisg+"' data-em='"+exist+"' id='check_"+data_id_producto+"' /><label for='check_"+data_id_producto+"' style='height:15px;'></label></td>";
           }
           else{
-            html+="<td class='celda1' id='celda2"+data_id_producto+"' style='padding:0px; width:30px;'></td>";
+            html+="<td class='celda1' id='celda2"+data_id_producto+"' style='padding:5px 0px; width:30px;'></td>";
           }
 
-          html+="<td style='padding:0px; width:1px;'><a href='#' class='btn red' data-id='"+data_id_producto+"' data-contador='"+cont+"' data-nom='"+nombre+"' id='elimina' style='padding-right:5px; padding-left:5px; padding-top:0px;'><i class='material-icons'>close</i></a></td>";
+          html+="<td style='padding:5px 0px; width:1px;'><a href='#' class='btn red' data-id='"+data_id_producto+"' data-contador='"+cont+"' data-nom='"+nombre+"' id='elimina' style='padding-right:5px; padding-left:5px; padding-top:0px;'><i class='material-icons'>close</i></a></td>";
           html+="</tr>";
           console.log(array);
 
@@ -292,7 +302,8 @@
 
         } 
 
-        $("#tabla_prod tbody").append(html);//agregar fragmentos de codigo al documento html   
+        $("#tabla_prod tbody").append(html);//agregar fragmentos de codigo al documento html 
+        // $('#tabla_prod').DataTable(); 
       });
 //*CHECK-BOX************************************************************************************************************
       $("#tabla_prod tbody").on("change","input.checar",function(event){
@@ -454,55 +465,77 @@
       }); 
 //*CERRAR-TODO********************************************************************************************************
       $("#btn_cerrar").click(function(){
-        array.length=0;
-        console.log(array);
-        $(".fila").remove();
-        $('#btn_enviar').attr('disabled', true);
-        $('#btn_cerrar').attr('disabled', true);
+        swal({
+          title: "¿Estas seguro?",
+          text: "Se cancelaran todos los productos cargados a esta lista",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "Si, estoy seguro",
+          closeOnConfirm: true
+        },
+        function(){
+          array.length=0;
+          console.log(array);
+          $(".fila").remove();
+          $('#btn_enviar').attr('disabled', true);
+          $('#btn_cerrar').attr('disabled', true);
+        });
       });
 //*ENVIAR-REQUI********************************************************************************************************
       $("#btn_enviar").click(function(){
-        array_registro1=[];
-        arr=[];
-        arr1=[];
-        va2=0;
+         swal({
+          title: "¿Estas seguro?",
+          text: "Ya cargaste todos los productos que necesitas",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "Si, estoy seguro",
+          closeOnConfirm: true
+        },
+        function(){
+          array_registro1=[];
+          arr=[];
+          arr1=[];
+          va2=0;
 
-        for(var i=0;i<array.length;i++)
-        {
-          var valor_ayuda="#valor"+array[i];
-          arr.push($(valor_ayuda).val());
-        }
+          for(var i=0;i<array.length;i++)
+          {
+            var valor_ayuda="#valor"+array[i];
+            arr.push($(valor_ayuda).val());
+          }
 
-        for(var j=0;j<array.length;j++)
-        {
-          var conn="#check_"+array[j];
-          if($(conn).prop('checked')){va2=1;}else{va2=0;}
-          array_registro1.push(va2);
-        }
+          for(var j=0;j<array.length;j++)
+          {
+            var conn="#check_"+array[j];
+            if($(conn).prop('checked')){va2=1;}else{va2=0;}
+            array_registro1.push(va2);
+          }
 
 
-        for(var k=0;k<array.length;k++)
-        {
-          array_registro.push(array[k]);
-          array_registro.push(arr[k]);
-          array_registro.push(id_user,array_registro1[k]);
+          for(var k=0;k<array.length;k++)
+          {
+            array_registro.push(array[k]);
+            array_registro.push(arr[k]);
+            array_registro.push(id_user,array_registro1[k]);
 
-          arr1.push(array_registro);
-          array_registro=[];
-          // console.log(arr1);
-        }
+            arr1.push(array_registro);
+            array_registro=[];
+            // console.log(arr1);
+          }
 
-        console.log(arr1);
-                
-        $.post('../../core/controllers/categorias_controller.php',{arr1:arr1,action:"insertar_requi"},function(request)
-        {
-          Materialize.toast("Registro Exitoso",2500);
+          console.log(arr1);
+                  
+          $.post('../../core/controllers/categorias_controller.php',{arr1:arr1,action:"insertar_requi"},function(request)
+          {
+            Materialize.toast("Registro Exitoso",2500);
+          });
+          array.length=0;
+          console.log(array);
+          $(".fila").remove();
+          $('#btn_enviar').attr('disabled', true);
+          $('#btn_cerrar').attr('disabled', true);
         });
-        array.length=0;
-        console.log(array);
-        $(".fila").remove();
-        $('#btn_enviar').attr('disabled', true);
-        $('#btn_cerrar').attr('disabled', true);
       });
 //*********************************************************************************************************************
     });

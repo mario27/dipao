@@ -24,7 +24,7 @@
 	<meta charset="UTF-8">
 	<title>Inicio</title>
 	<link rel="shortcut icon" href="../../resources/img/logo-dipao.png"> 
-	<!-- <link type="text/css" rel="stylesheet" href="../../resources/css/materialize.css"/> -->
+	<link type="text/css" rel="stylesheet" href="../../resources/css/sweetalert.css"/>
 	<link type="text/css" rel="stylesheet" href="../../resources/css/materialize.min.css"/>
 	<link type="text/css" rel="stylesheet" href="../../resources/css/styles.css"/>
   <link type="text/css" rel="stylesheet" href="../../resources/css/jquery.dataTables.min.css"/>
@@ -32,7 +32,7 @@
 
 
 	<script type="text/javascript" src="../../resources/js/jquery-2.2.3.min.js"></script>
-	<!-- <script type="text/javascript" src="../../resources/js/materialize.js"></script> -->
+	<script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
 	<script type="text/javascript" src="../../resources/js/materialize.min.js"></script>
 	<script type="text/javascript" src="../../resources/js/jquery.validate.min.js"></script> 
   <script type="text/javascript" src="../../resources/js/jquery.dataTables.min.js"></script>
@@ -62,6 +62,19 @@
           $(".press").removeClass("activa");
           $(this).addClass("activa");
         });  
+        $("#btn_salir").click(function(){
+          swal({
+            title: "¿Estas seguro?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Si, estoy seguro",
+            closeOnConfirm: false
+          },
+          function(){
+            window.location="../../";
+          });
+        });
       });
   </script>
 
@@ -87,7 +100,7 @@
           <li><a href="#!" style="color: #dd7008;">Perfil</a></li>
           <li><a href="#!" style="color: #dd7008;">Otros</a></li>
           <li class="divider"></li>
-          <li><a href="../../" style="color: #dd7008;"><i class="material-icons">settings_power</i>Salir</a></li>         
+          <li><a href="#" id="btn_salir" style="color: #dd7008;"><i class="material-icons">settings_power</i>Salir</a></li>         
           </ul>
       </ul>
       <ul class="side-nav" id="mobile-demo" style="opacity:.9;">

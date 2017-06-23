@@ -28,8 +28,12 @@ class categoria extends DBAbstractModel
     }
     public function set($arr1=array())
     {
-        foreach ($arr1 as list($id_prod,$canti,$id_user,$id_unid)):
-            $this->query="insert into requisiciones values(0,'".$id_prod."','".$canti."','".$id_unid."','".$id_user."',CURRENT_TIMESTAMP,1)";
+        $this->query="insert into ticket_requi values(0,CURRENT_TIMESTAMP)";
+        $this->execute_single_query();
+        
+        foreach ($arr1 as list($id_prod,$canti,$id_user,$unidad)):
+            $this->query="insert into requisiciones values(0,".$id_prod.",".$canti.",".$id_user.",CURRENT_TIMESTAMP,1,1)";
+            // echo $id_prod."-".$canti."-".$id_user."-".$unidad;
             $this->execute_single_query();
         endforeach;
     }

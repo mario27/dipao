@@ -1,0 +1,34 @@
+CREATE PROCEDURE insertar_requi(IN xid_producto INT, IN xcantidad double, IN xid_usuario INT, IN xunidad INT)
+begin
+
+declare ticket int;
+declare numero int;
+declare cantidad double;
+declare canti_total double;
+declare cantidad2 double;
+declare canti_total2 double;
+
+SELECT max(id_ticketr) into ticket FROM ticket_requi;
+insert into requisiciones values(0,xid_producto,xcantidad,xid_usuario,CURRENT_TIMESTAMP,1,ticket);
+select max(id_requisicion) into requi from requisiciones; 
+
+if(xunidad==0)
+{
+	select existenciag into cantidad from existencia;
+    canti_total=cantidad-xcantidad;
+    update existencia set existenciag=canti_total where id_producto=xid_producto;
+    insert into asignar_minima values(0,requi);
+}
+if(xunidad==1)
+{
+	select existenciam into cantidad2 from existencia;
+    canti_total2=cantidad2-xcantidad;
+    update existencia set existenciam=canti_total2 where id_producto=xid_producto;
+    select max(id_requisicion) into requi from requisiciones; 
+    insert into asignar_general values(0,requi);
+}
+
+
+
+end;
+//
