@@ -78,10 +78,10 @@
             stopPropagation: false // Stops event propagation
           }
         );
-        $(".press").on("click", function(){
-          $(".press").removeClass("activa");
-          $(this).addClass("activa");
-        });  
+        // $(".press").on("click", function(){
+        //   $(".press").removeClass("activa");
+        //   $(this).addClass("activa");
+        // });  
         $("#btn_salir").click(function(){
           swal({
             title: "¿Estas seguro?",
@@ -121,8 +121,8 @@
       <li><a href="#" data-activates="mobile-demo" class="button-collapse hov"><i class="material-icons">menu</i></a></li>
       </ul>
       <ul class="left hide-on-small-and-down">
-         <li class="press activa"><a href="#" id="requisiciones" class="hov"><b><i class="material-icons right">shopping_cart</i>Requisición</b></a></li>
-         <li class="press"><a href="#" id="pedidos" class="hov"><b><i class="material-icons right">add_shopping_cart</i>Pedidos</b></a></li>
+         <li class="press activa" id="li_req"><a href="index.php" id="requisiciones" class="hov"><b><i class="material-icons right">shopping_cart</i>Requisición</b></a></li>
+         <li class="press" id="li_ped"><a href="pedidos.php" id="pedidos" class="hov"><b><i class="material-icons right">add_shopping_cart</i>Pedidos</b></a></li>
          <li class="press"><a href="#" id="inventarios" class="hov"><b><i class="material-icons right">assignment</i>Inventario</b></a></li>
          <li class="press"><a href="#" class="hov"><b><i class="material-icons right">store</i>Reportes</b></a></li>
       </ul>
