@@ -104,12 +104,13 @@
 			?>
 				<script type="text/javascript">
 					Materialize.toast("<?php echo $data; ?>",2000);
+					window.location="";
 				</script>
 			<?php
 			break;
 			
 			case 'regresar_usuario':
-			$usuario=new Usuario();
+			$usua=new Usuario();
 			$con1=$_POST['con1'];
 
 			$f=$usua->edit();

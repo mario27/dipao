@@ -1,17 +1,6 @@
 <?php
 require_once('conexion.php');
 	class Productos extends DBAbstractModel{
-	public $id_actividad;
-	public $nombre;
-	public $descripcion;
-	public $fecha_inicio; 
-	public $fecha_fin;
-	public $id_plan; 
-
-	public $acti; 
-	public $des;
-	public $f1; 
-	public $f2;
 
 public function get_all($valor="") 
 {
@@ -26,7 +15,7 @@ public function get_all($valor="")
 			// $this->query="select *from categorias c,subcategorias s,asignar_padre a, productos p, nombre_productos n,marcas m,presentacion pr,proveedores po,existe e,unidad_minima um, areas are,asignar_areas aa where are.id_area=aa.id_area and p.id_producto=aa.id_producto and c.id_categoria=a.id_categoria and s.id_subcategoria=a.id_subcategoria and p.id_nombrep=n.id_nombrep and n.id_asignarp=a.id_asignarp and m.id_marca=p.id_marca and p.id_presentacion=pr.id_presentacion and po.id_provedor=p.id_provedor and e.id_existe=p.id_existe and pr.id_unidadm=um.id_unidadm ";
 			// return$this->get_results_from_query();
 
-			$this->query="select *from categorias c,subcategorias s,asignar_padre a, productos p, nombre_productos n,marcas m,presentacion pr,proveedores po,existe e,unidad_minima um, areas are,asignar_areas aa,existencia ex where ex.id_producto=p.id_producto and are.id_area=aa.id_area and p.id_producto=aa.id_producto and c.id_categoria=a.id_categoria and s.id_subcategoria=a.id_subcategoria and p.id_nombrep=n.id_nombrep and n.id_asignarp=a.id_asignarp and m.id_marca=p.id_marca and p.id_presentacion=pr.id_presentacion and po.id_provedor=p.id_provedor and e.id_existe=p.id_existe and pr.id_unidadm=um.id_unidadm group by p.id_producto";
+			$this->query="select *from categorias c,subcategorias s,asignar_padre a, productos p, nombre_productos n,marcas m,presentacion pr,proveedores po,existe e,unidad_minimap um, areas are,asignar_areas aa,existencia ex where ex.id_producto=p.id_producto and are.id_area=aa.id_area and p.id_producto=aa.id_producto and c.id_categoria=a.id_categoria and s.id_subcategoria=a.id_subcategoria and p.id_nombrep=n.id_nombrep and n.id_asignarp=a.id_asignarp and m.id_marca=p.id_marca and p.id_presentacion=pr.id_presentacion and po.id_provedor=p.id_provedor and e.id_existe=p.id_existe and pr.id_unidadmp=um.id_unidadmp group by p.id_producto";
 			return$this->get_results_from_query();
 
 	}
@@ -37,7 +26,7 @@ public function get_all($valor="")
 	}
 		if($valor==3)
 	{
-		$this->query="select ug.des_unidadg,e.cantidad,um.des_unidadm from equivalencia e, unidad_general ug,unidad_minima um where e.id_unidadg=ug.id_unidadg and e.id_unidadm=um.id_unidadm ";
+		$this->query="select e.id_equivalencia,ug.des_unidadg,e.cantidad,um.des_unidadm from equivalencia e, unidad_general ug,unidad_minima um where e.id_unidadg=ug.id_unidadg and e.id_unidadm=um.id_unidadm ";
 		return $this->get_results_from_query();
 	}
 	if($valor==4)
@@ -48,6 +37,11 @@ public function get_all($valor="")
 	if($valor==5)
 	{
 		$this->query="select *from proveedores";
+		return $this->get_results_from_query();
+	}
+	if($valor==6)
+	{
+		$this->query="select *from categorias";
 		return $this->get_results_from_query();
 	}
 
@@ -75,7 +69,7 @@ public function get($valor="")
 	}
 	if($valor==4)
 	{
-		$this->query="select p.id_presentacion,p.cantidad,um.id_unidadm,um.des_unidadm from presentacion p,unidad_minima um where p.id_unidadm=um.id_unidadm";
+		$this->query="select p.id_presentacion,p.cantidad,um.id_unidadmp,um.des_unidadmp from presentacion p,unidad_minimap um where p.id_unidadmp=um.id_unidadmp";
 		return $this->get_results_from_query();
 	}
 	if($valor==5)
@@ -90,7 +84,7 @@ public function get($valor="")
 	}
 	if($valor==7)
 	{
-		$this->query="select *from unidad_minima";
+		$this->query="select *from unidad_minimap";
 		return $this->get_results_from_query();
 	}
 	if($valor==8)
@@ -145,10 +139,43 @@ public function get($valor="")
 		$this->query="select id_marca from marcas where des_marca='Ninguna'";
 		return $this->get_results_from_query();
 	}
+	if($valor==18)
+	{
+		$this->query="select *from unidad_minima";
+		return $this->get_results_from_query();
+	}
 
 
 	
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// public function set($data_pass=array()) 
+//     {	
+//     	if(array_key_exists('name', $data_pass)) {
+//     		foreach ($data_pass as $campo => $value): 
+// 	        	$$campo = $value;
+// 	        endforeach;
+//     		$this->query = "SELECT *from usuarios WHERE nombre='".$nom."'";
+//     		$this->get_results_from_query();
+// 			if(count($this->rows) != 1) {
+// 		        $this->query="call insertar_usuario('".$name."','".$ap."','".$am."',".$area.",".$puesto.",".$tipo.",'".$nom."','".$pass."')";
+// 		        $this->execute_single_query();
+// 		        $this->mensaje = 'Usuario agregado exitosamente';
+// 	    	}
+// 	    	else
+// 	    	{
+// 	    		$this->mensaje = 'El usuario ya existe';
+// 	    	}
+// 		}
+// 	    else
+// 	    {
+// 	    	$this->mensaje = 'No se ha agregado el usuario';
+// 	    }
+//     }
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public function set($data_algo=array()) 
 { 
@@ -158,29 +185,33 @@ public function set($data_algo=array())
 
 	if($valor==7)
 	{
-		$this->query="call insertar_producto('".$nom."','".$mar."', '".$equi."','".$pre."','".$pro."','".$exi."')";
-		$this->execute_single_query();
+		if(array_key_exists('nom', $data_algo) && array_key_exists('mar', $data_algo))
+		{
+
+			$this->query="select id_producto from productos where id_nombrep='".$nom."' and id_marca='".$mar."' and id_presentacion='".$pre."'";
+			$this->get_results_from_query();
+			if(count($this->rows) != 1)
+			{
+
+				$this->query="call insertar_producto('".$nom."','".$mar."', '".$equi."','".$pre."','".$pro."','".$exi."')";
+				$this->execute_single_query();
+				$this->mensaje='Producto insertado correctamente';
+
+			}
+			else
+			{
+				$this->mensaje=2;
+			}
+		}
 	}
 	if($valor==6)
 	{
-		if(array_key_exists('nombre', $data_algo) && array_key_exists('s', $data_algo))
-		{
-			$this->query="call insertar_nombre('".$cat."','".$s."','".$nombre."')";
-			$mensaje="Esto se ha insertado";
-			echo'<div class="row"><div class="col-lg-6 col-lg-offset-3"><h3 class="text-center">Esto se ha insertado</h3></div>
-            </div><br>';
-			$this->execute_single_query();
-			return $mensaje;
-
-		}
-		else
-		{
-			$mensaje="No manches no existe";
-		}
+		
 		//$bodytag = str_replace("%body%", "black", "<body text='%body%'>");
 	}
 	if($valor==10)
 	{
+		//"select n.id_nombrep,n.des_nombrep from nombre_productos n,asignar_padre a,categorias c, subcategorias s where n.id_asignarp=a.id_asignarp and a.id_categoria=c.id_categoria and a.id_subcategoria=s.id_subcategoria and s.id_subcategoria='".$con1."', and c.id_categoria='".$con2."'"
 		// $this->query="select *from nombre_productos where id_subcategoria='".$con1."'";
 		$this->query="select n.id_nombrep,n.des_nombrep from nombre_productos n,asignar_padre a,categorias c, subcategorias s where n.id_asignarp=a.id_asignarp and a.id_categoria=c.id_categoria and a.id_subcategoria=s.id_subcategoria and s.id_subcategoria='".$con1."'";
 		return $this->get_results_from_query();
@@ -220,8 +251,33 @@ public function set($data_algo=array())
 	}
 	if($valor==18)
 	{
-		$this->query="call insertar_nombre('".$cat."','".$s."','".$nombre."')";
-		$this->execute_single_query();
+		// $this->query="call insertar_nombre('".$cat."','".$s."','".$nombre."')";
+		// $this->execute_single_query();
+
+		if(array_key_exists('nombre', $data_algo))
+		{
+			
+			$this->query = "select *from nombre_productos where des_nombrep='".$nombre."'";
+			$this->get_results_from_query();
+
+			if(count($this->rows) != 1)
+			{
+				$this->query="call insertar_nombre('".$cat."','".$s."','".$nombre."')";
+				$this->execute_single_query();
+				$this->mensaje = 'Nombre agregado exitosamente';
+
+			}
+			else
+			{
+				$this->mensaje= 'El nombre ya existe';
+			}
+		
+
+		}
+		else
+		{
+			$this->mensaje='No se ha ejecutado la petición';
+		}
 	}
 	if($valor==19)
 	{
@@ -233,9 +289,9 @@ public function set($data_algo=array())
 		$this->query="insert into presentacion values(0,'".$cant."','".$uni."')";
 		$this->execute_single_query();
 	}
-		if($valor==21)
+	if($valor==21)
 	{
-		$this->query="insert into unidad_minima values(0,'".$nom."')";
+		$this->query="insert into unidad_minimap values(0,'".$nom."')";
 		$this->execute_single_query();
 	}
 	if($valor==22)
@@ -263,7 +319,31 @@ public function set($data_algo=array())
 		$this->query="insert into proveedores values(0,'".$nom."','".$rfc."','".$tel."','".$cor."')";
 		$this->execute_single_query();
 	}
-
+	if($valor==28)
+	{
+		$this->query="insert into unidad_minima values(0,'".$nom."')";
+		$this->execute_single_query();
+	}
+	if($valor==29)
+	{
+		$this->query="select *from productos p, categorias c, subcategorias s,asignar_padre a, nombre_productos n where a.id_categoria=c.id_categoria and a.id_subcategoria=s.id_subcategoria and n.id_asignarp=a.id_asignarp and n.id_nombrep=p.id_nombrep and p.id_producto='".$id_cambio."'";
+		return $this->get_results_from_query();
+	}
+	if($valor==30)
+	{
+		$this->query="select e.id_equivalencia from equivalencia e, asignar_equi aq, productos p where p.id_producto=aq.id_producto and e.id_equivalencia=aq.id_equivalencia and p.id_producto='".$id_cambio."'";
+		return $this->get_results_from_query();
+	}
+	if($valor==31)
+	{
+		$this->query="select n.id_nombrep,n.des_nombrep from nombre_productos n,asignar_padre a,categorias c, subcategorias s where n.id_asignarp=a.id_asignarp and a.id_categoria=c.id_categoria and a.id_subcategoria=s.id_subcategoria and s.id_subcategoria='".$con1."' and c.id_categoria='".$con2."'";
+		return $this->get_results_from_query();
+	}
+	if($valor==32)
+	{
+		$this->query="select c.id_categoria,c.des_categoria,c.color colc,s.id_subcategoria, s.des_subcategoria,s.color cols from categorias c,subcategorias s,asignar_padre a where c.id_categoria=a.id_categoria and s.id_subcategoria=a.id_subcategoria";
+		return $this->get_results_from_query();
+	}
 	
 	
 }
@@ -275,41 +355,40 @@ public function arreglos($arreglo_areas=array(), $val="")
 		foreach ($arreglo_areas as list($area2)):
 			$this->query="call insertar_area('".$area2."')";
 			$this->execute_single_query();
+			$this->mensaje='Producto agregado correctamente';
 		endforeach;
 	}
 
 }
 
-public function edit($data_estados=array()) 
+public function edit($data_edicion=array()) 
 {
-	foreach ($data_estados as $campo => $value): 
+	foreach ($data_edicion as $campo => $value): 
 			$$campo = $value;
 	endforeach;	
-	
+
 	if($valor==1)
 	{
-		$est=1;
-		$this->query="update actividades set id_estado='".$valor."' where id_actividad='".$id_actividad."'";
+		$this->query="call modificar_producto1('".$id."','".$nom."','".$marm."','".$eq6."','".$pre."','".$pro."','".$bandera_m."')";
 		$this->execute_single_query();
-
 	}
-	if($valor==2)
-	{
-		$est=2;
-		$this->query="update actividades set id_estado='".$valor."' where id_actividad='".$id_actividad."'";
-		$this->execute_single_query();
-
-	}
-
-
 	
 }
 
 
-public function delete($id_actividad="") 
+public function delete($data_array=array()) 
 {
-	$this->query="delete from empleados where id_empleado='".$id_empleado."'";
-	$this->execute_single_query();
+	foreach ($data_array as $campo => $value): 
+			$$campo = $value;
+	endforeach;	
+
+	if($valor==1)
+	{
+		$this->query="call cerrar_insertar('".$exi."')";
+		$this->execute_single_query();
+		$this->mensaje='Se ha abandonado la acción';
+
+	}
 
 }
 

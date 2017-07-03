@@ -1,4 +1,4 @@
-<?php session_start();
+<?php
 
 	$acciones="";
 	if(isset($_POST["act"]) || isset($_GET["act"]))
@@ -7,7 +7,7 @@
 
 		require_once ("../BD/producto_model.php");
 	}
-
+ 
  
 		switch ($acciones) { 
 			case 'get_all':
@@ -23,7 +23,18 @@
 
 			$productos=new Productos();
 			//return $actividades->get_all();
-			$valor=2;
+			$valor=32;
+			// $valo=$_POST['valo'];
+			$data_nombres= array('valor'=>$valor);
+			print_r($productos->set($data_nombres));
+
+			break;
+
+			case 'get_all_cat1':
+
+			$productos=new Productos();
+			//return $actividades->get_all();
+			$valor=6;
 			print_r($productos->get_all($valor));
 
 			break;
@@ -203,6 +214,13 @@
 				# code...
 			break;
 
+			case 'select_unidadme':
+				$productos=new Productos();
+				$valor=18;
+				print_r($productos->get($valor));
+				# code...
+			break;
+
 			case 'select_marca':
 				$productos=new Productos();
 				$valor=8;
@@ -267,6 +285,18 @@
 
 			break;
 
+			case 'select_nom_especial':
+
+							$productos=new Productos();
+							$valor=31;
+							$con1=$_POST['con1'];
+							$con2=$_POST['con2'];
+							$data_nombres= array('con1'=>$con1,'con2'=>$con2,'valor'=>$valor);
+							print_r($productos->set($data_nombres));
+							
+
+			break;
+
 
 			// case 'asignar_area':
 
@@ -305,7 +335,34 @@
 				$exi=$_POST['exi'];
 				$valor=7;
 				$data_pro= array('nom'=>$nom,'mar'=>$mar,'pre'=>$pre,'equi'=>$equi,'valor'=>$valor,'pro'=>$pro,'exi'=>$exi);
-		    	$productos->set($data_pro);//retorna el archivo de conexion
+		    	print_r($productos->set($data_pro));
+		    	$data = $productos->mensaje;//retorna el archivo de conexion
+		    	//print_r($data);
+		    	if($data==2)
+		    	{
+		    		?>
+					<script type="text/javascript">
+						swal("El producto ya existe");
+					</script>
+					<?php
+
+		    	}
+		    	else
+		    	{
+		    		?>
+					<script type="text/javascript">
+						//swal("El producto ya existe");
+					
+						$("#f_producto").hide();
+                        $("#f_area").show();
+                        $("#agregar_p")[0].reset();
+                        
+					</script>
+					<?php
+
+
+		    	}
+		  //   	
 			
 			break;
 
@@ -317,7 +374,16 @@
 				$cat=$_POST['cat'];
 				$valor=18;
 				$data_nombres=array('nombre'=>$nombre,'valor'=>$valor,'s'=>$s,'nombre'=>$nombre,'cat'=>$cat);
-				$productos->set($data_nombres);
+				print_r($productos->set($data_nombres));
+				//print_r($usuario->set($data_pass));
+				$data = $productos->mensaje;
+				//print_r($data);
+				?>
+				<script type="text/javascript">
+					swal("<?php echo $data;?>");
+				</script>
+			<?php
+
 			break;
 
 			case 'insertar_marca':
@@ -344,6 +410,15 @@
 
 				$nom=$_POST['nom'];
 				$valor=21;
+				$data_uni=array('nom'=>$nom,'valor'=>$valor);
+				$productos->set($data_uni);
+			break;
+
+			case 'insertar_unidadme':
+				$productos=new Productos();
+
+				$nom=$_POST['nom'];
+				$valor=28;
 				$data_uni=array('nom'=>$nom,'valor'=>$valor);
 				$productos->set($data_uni);
 			break;
@@ -374,7 +449,15 @@
 				$arreglo_areas=$_POST['arreglo_areas'];
 				$val=24;
 				//$data_equi=array('sel1'=>$sel1,'valor'=>$valor,'sel2'=>$sel2,'cant'=>$cant);
-				$productos->arreglos($arreglo_areas,$val);
+				print_r($productos->arreglos($arreglo_areas,$val));
+				$data=$productos->mensaje;
+				?>
+					<script type="text/javascript">
+						swal("<?php echo $data;?>");
+					</script>
+				<?php
+
+
 			break;
 			case 'area':
 
@@ -412,9 +495,64 @@
 
 			break;
 
-			
-			
-			
+			case 'consultar':
+
+				$productos=new Productos();
+				$valor=29;
+				$id_cambio=$_POST['id_cambio'];
+				$data_cambio= array('id_cambio'=>$id_cambio,'valor'=>$valor);
+				print_r($productos->set($data_cambio));			
+
+			break;
+
+			case 'consultar_equi':
+
+				$productos=new Productos();
+				$valor=30;
+				$id_cambio=$_POST['id_cambio'];
+				$data_cambio= array('id_cambio'=>$id_cambio,'valor'=>$valor);
+				print_r($productos->set($data_cambio));			
+
+			break;
+
+			case 'modificar_producto':
+
+				$productos=new Productos();
+				// $catm=$_POST["catm"];
+				// $subm=$_POST["subm"];
+				$marm=$_POST["marm"];
+				$nom=$_POST["nom"];
+				$pre=$_POST["pre"];
+				$pro=$_POST["pro"];
+				$eq6=$_POST["eq6"];
+				$bandera_m=$_POST["bandera_m"];
+				$id=$_POST['id'];
+				$valor=1;
+				$data_cambio= array('valor'=>$valor,'marm'=>$marm,'nom'=>$nom,'pre'=>$pre,'pro'=>$pro,'eq6'=>$eq6,'bandera_m'=>$bandera_m,'id'=>$id);
+				$productos->edit($data_cambio);			
+
+			break;
+
+			case 'cancelar_insertar_producto':
+
+				$productos=new Productos();
+				$valor=1;
+				$exi=$_POST['exi'];
+				$data_cambio= array('valor'=>$valor,'exi'=>$exi);
+				print_r($productos->delete($data_cambio));
+				$data=$productos->mensaje;
+				?>
+					<script type="text/javascript">
+                        swal("<?php echo $data;?>");
+                        
+					</script>
+				<?php
+
+
+
+
+			break;
+
 			default:
 				//echo "esta mal esto";
 			break;
