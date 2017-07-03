@@ -31,15 +31,22 @@ class categoria extends DBAbstractModel
         $this->query="insert into ticket_requi values(0,CURRENT_TIMESTAMP)";
         $this->execute_single_query();
         
-        foreach ($arr1 as list($id_prod,$canti,$id_user,$unidad)):
-            $this->query="insert into requisiciones values(0,".$id_prod.",".$canti.",".$id_user.",CURRENT_TIMESTAMP,1,1)";
-            // echo $id_prod."-".$canti."-".$id_user."-".$unidad;
+        foreach ($arr1 as list($id_prod,$canti,$id_user,$selec)):
+            $this->query="call insertar_requi(".$id_prod.",".$canti.",".$id_user.",".$selec.")";
+            // echo $id_prod."-".$canti."-".$id_user."-".$selec;
             $this->execute_single_query();
         endforeach;
     }
-    public function edit()
+    public function edit($v='',$id_tick='')
     {
-
+        if ($v==1) {
+            $this->query="select id_ticketr,date(fecha) fecha,time(fecha) hora from ticket_requi";
+            return $this->get_results_from_query();
+        }
+        if ($v==2) {
+            $this->query="select r.id_requisicion,n.des_nombrep,r.cantidad from requisiciones r,productos p,nombre_productos n where p.id_producto=r.id_producto and n.id_nombrep=p.id_nombrep and r.id_ticketr='".$id_tick."'";
+            return $this->get_results_from_query();
+        }
     }
      public function delete()
     {

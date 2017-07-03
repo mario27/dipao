@@ -3,20 +3,22 @@
 ?>
 <!--***TABS***************************************************************************************************************** -->
 <main>
+  <div id="requi">
   <nav class="nav-extended" style="background: #eaa110; background-image: url(../../resources/img/nav8.png);">
     <ul class="tabs tabs-transparent">
       <li class="tab"><a class="active" href="#test1"><b>Nueva</b></a></li>
-      <li class="tab"><a href="#test2"><b>Estado</b></a></li>
+      <li class="tab"><a href="#test2" id="estado"><b>Estado</b></a></li>
       <li class="tab"><a href="#test3"><b>Historial</b></a></li>
     </ul>
   </nav>
+
+<div id="test1">
   <div class="row" style="padding-top: 5px">
     <div class="col s12 m8 l9 grey lighten-3">
-      <div id="test1">
-        <div class="row">
-         <div class="col s12 m12 l12" style="padding: 0px 5px 0px 5px">
+      <div class="row">
+        <div class="col s12 m12 l12" style="padding: 0px 5px 0px 5px">
           <div class="card horizontal" style="margin-bottom: 1px;">
-            <div class="green" style="width: 22px;">
+            <div class="indigo lighten-5" style="width: 22px;">
               <span style=" writing-mode: vertical-lr; transform: rotate(180deg);">Categorias</span>
             </div>
             <div class="card-stacked">
@@ -28,7 +30,7 @@
         </div>
         <div class="col s12 m12 l12" style="padding: 0px 5px 0px 5px">
           <div class="card horizontal" style="margin-bottom: 1px;">
-            <div class="blue" style="width: 22px;">
+            <div class="indigo lighten-5" style="width: 22px;">
               <span style=" writing-mode: vertical-lr; transform: rotate(180deg);">Subcategorias</span>
             </div>
             <div class="card-stacked">
@@ -40,7 +42,7 @@
         </div>
         <div class="col s12 m12 l12" style="padding: 0px 5px 0px 5px">
           <div class="card horizontal" style="margin-bottom: 1px;">
-            <div class="red" style="width: 22px;">
+            <div class="indigo lighten-5" style="width: 22px;">
               <span style=" writing-mode: vertical-lr; transform: rotate(180deg);">Productos</span>
             </div>
             <div class="card-stacked">
@@ -50,21 +52,18 @@
             </div>
           </div>
         </div>
-        </div>
       </div>
-      <div id="test2" class="col s12">Opción 2</div>
-      <div id="test3" class="col s12">Opción 3</div>
     </div>
     <div class="col s12 m4 l3 grey lighten-2" style="padding: 5px;">
       <div class="row" style="margin-bottom: 0px;">
         <div class="col s12">
           <div id="ag" class="borde row" style="background-color: #0D163C;">
-              <a type="" id="btn_enviar" class="btn col right" style="background: #D6E055; margin-top:2%; margin-bottom:2%; margin-right:2%">
-                  <i class="material-icons">send</i>
-              </a>
-              <a type="" id="btn_cerrar" class="btn col right" style="background: #8810AF; margin-top:2%; margin-bottom:2%; margin-right:2%">
-                  <i class="material-icons">close</i>
-               </a>
+            <a type="" id="btn_enviar" class="btn col right" style="background: #D6E055; margin-top:2%; margin-bottom:2%; margin-right:2%">
+                <i class="material-icons">send</i>
+            </a>
+            <a type="" id="btn_cerrar" class="btn col right" style="background: #8810AF; margin-top:2%; margin-bottom:2%; margin-right:2%">
+                <i class="material-icons">close</i>
+            </a>
           </div> 
         </div>
       </div>
@@ -72,20 +71,54 @@
         <tbody>
 
         </tbody>
-        <!-- <thead>
-          <tr>
-              <th>1</th>
-              <th>2</th>
-              <th>3</th>
-              <th>4</th>
-              <th>5</th>
-              <th>6</th>
-          </tr>
-        </thead> -->
       </table>
-      <div id="botones"></div>
     </div>
   </div>
+</div>  
+  <div id="test2" class="col s12">
+    <div class="row" style="padding-top: 5px">
+      <div class="col s12 m8 l9 grey lighten-3">
+        <table class="bordered centered striped" id="tabla_requi">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+      </div>
+      <div class="col s12 m4 l3 grey lighten-2" style="padding: 5px;">
+        <div class="row" style="margin-bottom: 0px;">
+          <div class="col s12">
+            <div id="ag" class="borde row" style="background-color: #0D163C;">
+              <a type="" id="btn_enviar" class="btn col right" style="background: #D6E055; margin-top:2%; margin-bottom:2%; margin-right:2%">
+                  <i class="material-icons">send</i>
+              </a>
+              <a type="" id="btn_cerrar" class="btn col right" style="background: #8810AF; margin-top:2%; margin-bottom:2%; margin-right:2%">
+                  <i class="material-icons">close</i>
+              </a>
+            </div> 
+          </div>
+        </div>
+        <table class="bordered centered striped" id="tabla_datos">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Cantidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div id="test3" class="col s12">Opción 3</div>
 
   <div id="modal1" class="modal bottom-sheet" style="width: 50%; margin-left: 25%;">
     <div class="modal-content">
@@ -109,6 +142,23 @@
     <div class="modal-footer">
       <a href="#!" class="modal-action modal-close waves-effect waves-orange btn-flat">Cerrar</a>
     </div>
+  </div>
+  </div>
+  <div id="pedid">
+    <nav class="nav-extended" style="background: #eaa110; background-image: url(../../resources/img/nav8.png);">
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a class="active" href="#test1"><b>Nueva</b></a></li>
+        <li class="tab"><a href="#test2" id="estado"><b>Estado</b></a></li>
+        <li class="tab"><a href="#test3"><b>Historial</b></a></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="invent">
+    <nav class="nav-extended" style="background: #eaa110; background-image: url(../../resources/img/nav8.png);">
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a class="active" href="#test1"><b>Inventario</b></a></li>
+      </ul>
+    </nav>
   </div>
 </main>
 
@@ -158,7 +208,7 @@
               {
                 $.each(res, function(i, item)
                 {
-                  html+="<a class='btn btn-large' id='btn-subcategoria' data-id='"+item.id_subcategoria+"' style='background:"+color+"; width: 206px; margin: 2px 2px 2px 2px; padding-left: 1px; padding-right: 1px;'>"+item.des_subcategoria+"</a>";
+                  html+="<a class='active btn btn-large' id='btn-subcategoria' data-id='"+item.id_subcategoria+"' style='background:"+item.color+"; width: 206px; margin: 2px 2px 2px 2px; padding-left: 1px; padding-right: 1px;'>"+item.des_subcategoria+"</a>";
                 });
               }
               $("#subcategorias").html(html);
@@ -182,7 +232,14 @@
           {
             $.each(res, function(i,item,)
             {
-              html+="<a href='#' id='btn-producto' data-id="+item.id_producto+" data-existenciam="+item.existenciam+" data-existenciag="+item.existenciag+" data-existenciatotal="+item.existencia+" data-nombre='"+item.des_nombrep+"' data-marca='"+item.des_marca+"' data-paq='"+item.id_existe+"'><div class='element-item'><h3 class='name'>"+item.des_nombrep+"</h3><p class='symbol'>"+item.des_marca+"</p><p class='weight'>"+item.cantidad+" "+item.des_unidadmp+"</p></div></a>";
+              if (item.existencia!=0) 
+              {
+                html+="<a style='cursor:pointer;' id='btn-producto' data-id="+item.id_producto+" data-existenciam="+item.existenciam+" data-existenciag="+item.existenciag+" data-existenciatotal="+item.existencia+" data-nombre='"+item.des_nombrep+"' data-marca='"+item.des_marca+"' data-paq='"+item.id_existe+"'><div class='element-item'><h3 class='name'>"+item.des_nombrep+"</h3><p class='symbol'>"+item.des_marca+"</p><p class='weight'>"+item.cantidad+" "+item.des_unidadmp+"</p></div></a>";
+              }
+              else
+              {
+                html+="<a><div class='element-item'><h3 class='name'>"+item.des_nombrep+"</h3><h3 class='subname'>(Agotado)</h3><p class='symbol'>"+item.des_marca+"</p><p class='weight'>"+item.cantidad+" "+item.des_unidadmp+"</p></div></a>";
+              }
             });
           }
           $("#productos").html(html);
@@ -234,7 +291,8 @@
           
           if (n[data_id_producto]>exist)
           {
-            alert("La existencia de este producto llego a 0");  
+            // alert("La existencia de este producto llego a 0");  
+            sweetAlert("Oops...", "¡Producto agotado!", "error");
           }
           else
           {
@@ -281,7 +339,8 @@
           {
             if(n[data_id_producto]>exist)
             {
-              alert("La existencia de este producto llego a 0"); 
+              // alert("La existencia de este producto llego a 0");
+              sweetAlert("Oops...", "¡Producto agotado!", "error");
             }
             else
             {
@@ -292,7 +351,8 @@
           {
             if(n[data_id_producto]>exisg)
             {
-              alert("La existencia de este producto llego a 0"); 
+              // alert("La existencia de este producto llego a 0"); 
+              sweetAlert("Oops...", "¡Producto agotado!", "error");
             }
             else
             {
@@ -347,7 +407,8 @@
 
         if (n[d]==0)  
         {
-          alert("No permitido");   
+          // alert("No permitido");
+          sweetAlert("Oops...", "¡NO puedes pedir 0 productos!", "error");   
         }
         else
         {
@@ -376,7 +437,8 @@
         {
           if (n[da]>exist) 
           {
-            alert("La existencia de este producto llego a 0");  
+            // alert("La existencia de este producto llego a 0");  
+            sweetAlert("Oops...", "¡Producto agotado!", "error");
           }
           else
           { 
@@ -392,7 +454,8 @@
           // }
           if (n[da]>exisg) 
           {
-            alert("La existencia de este producto llego a 0");  
+            // alert("La existencia de este producto llego a 0"); 
+            sweetAlert("Oops...", "¡Producto agotado!", "error"); 
           }
           else
           { 
@@ -538,6 +601,48 @@
         });
       });
 //*********************************************************************************************************************
+//* PESTAÑA-ESTADO*****************************************************************************************************
+      $("#estado").click(function(){
+        tabla_req();
+
+        // alert (f.getUTCDate() + " de "  + meses[f.getUTCMonth()] + " de " + f.getUTCFullYear()) ;
+      });
+      function tabla_req(){
+        $.get("../../core/controllers/categorias_controller.php",{action:"requis"},function(res){
+          res = JSON.parse(res);
+          var html="";
+          var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+
+          $.each(res, function(i, item)
+          {
+            var f=new Date(item.fecha);
+            // alert(f);
+            html+="<tr id='clic_ticket' data-id='"+item.id_ticketr+"'><td>"+(i+1)+"</td>";         
+            html+="<td>"+f.getUTCDate()+" de "+meses[f.getUTCMonth()]+" de "+f.getUTCFullYear()+"</td>";
+            html+="<td>"+item.hora+"</td></tr>";
+          });
+
+          $("#tabla_requi tbody").html(html);
+          $('#tabla_requi').DataTable();
+        });
+      }  
+//*TICKET-SELECCIONADO*************************************************************************************************
+      $("#tabla_requi tbody").on("click","tr#clic_ticket",function(){
+        var id_ticket=$(this).data("id");
+        // alert(id_ticket);
+        $.post("../../core/controllers/categorias_controller.php",{id_ticket:id_ticket,action:"datos_ticket"},function(res){
+            res = JSON.parse(res);
+            var html="";
+            $.each(res, function(i, item)
+            {
+              html+="<tr><td>"+item.des_nombrep+"</td>";
+              html+="<td>"+item.cantidad+"</td></tr>";
+            });
+            $("#tabla_datos tbody").html(html);
+          });
+      });
+//*********************************************************************************************************************
+  
     });
   </script>
 

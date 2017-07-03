@@ -34,8 +34,8 @@
           <h5><b><i class="material-icons">lock</i> Inicio</b></h5> 
         </div>  
         <div class="card-action">
-        <div class="fixed-action-btn" style="top: -10px; right: 0px; position: absolute;">
-            <a href="#" id="btn_adduser" class="tooltipped" data-delay="50" data-tooltip="Agregar usuarios" style="margin-right: 3px; color: green;"><i class="material-icons">settings</i></a>
+        <div style="top: 1px; right: 0px; position: absolute;">
+            <a href="#" id="btn_adduser" class="tooltipped btn-floating purple" data-delay="50" data-tooltip="Agregar usuarios" style="margin-right: 3px; color: green;"><i class="material-icons">settings</i></a>
         </div>
           <form id="form_login">
             <div class="row" novalidate="novalidate">
@@ -123,9 +123,14 @@
       </div>
     </div>
   </div>
+  <div id="pr"></div>
 </body>
   <script type="text/javascript">
     $(document).ready(function(){
+      function pre(){
+        var html='<div class="preloader-background"><div class="preloader-wrapper big active"><div class="spinner-layer spinner-red-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div></div>';
+          $('#pr').html(html);
+      }
       function areas()
       {
         $.get('core/controllers/usuarios_controller.php',{action:"sel_area"},function(res){
@@ -197,6 +202,12 @@
           $.post('core/controllers/usuarios_controller.php',{usrname:usrname,psw:psw,action:"sesion"},function(request){
               $("#cont_request").html(request); 
           });
+          pre();
+          $('.preloader-background').delay(3000).fadeOut('slow');
+  
+          $('.preloader-wrapper')
+            .delay(3000)
+            .fadeOut(); 
         }
       });
 

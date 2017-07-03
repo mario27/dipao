@@ -37,6 +37,17 @@
 				$categoria=new categoria();
 				print_r($categoria->set($arr1));	
 			break;
+			case 'requis':
+				$categoria=new categoria();
+				$v=1;
+				print_r($categoria->edit($v));
+			break;
+			case 'datos_ticket':
+				$categoria=new categoria();
+				$v=2;
+				$id_tick=$_POST["id_ticket"];
+				print_r($categoria->edit($v,$id_tick));
+			break;
 			default:
 				echo "Creo que ha ocurrido un error";
 			break;

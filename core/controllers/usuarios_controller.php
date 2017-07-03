@@ -103,9 +103,7 @@
 
 			?>
 				<script type="text/javascript">
-					Materialize.toast("<?php echo $data; ?>",2000,'',function(){
-						window.location="";
-					});
+					Materialize.toast("<?php echo $data; ?>",2000);
 				</script>
 			<?php
 			break;

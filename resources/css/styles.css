@@ -212,6 +212,16 @@ nav .button-collapse{
   font-weight: bold;
   color: black;
 }
+.element-item .subname {
+  /*position: absolute;*/
+  text-align: center;
+  left: 0px;
+  top: 0px;
+  line-height: 15px;
+  font-size: 10px;
+  font-weight: bold;
+  color: red;
+}
 .element-item .symbol {
   position: absolute;
   left: 5px;
@@ -256,4 +266,18 @@ nav .button-collapse{
 }
 [type="checkbox"] + label {
   padding-left: 28px;
+}
+
+.preloader-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eee;
+  
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;  
 }

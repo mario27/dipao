@@ -40,6 +40,26 @@
 
 	<script type="text/javascript">
       $(document).ready(function(){
+        $("#requi").show();
+        $("#pedid").hide();
+        $("#invent").hide();
+
+        $("#requisiciones").click(function(){
+          $("#requi").show();
+          $("#pedid").hide();
+          $("#invent").hide();
+        });
+        $("#pedidos").click(function(){
+          $("#requi").hide();
+          $("#pedid").show();
+          $("#invent").hide();
+        });
+        $("#inventarios").click(function(){
+          $("#requi").hide();
+          $("#pedid").hide();
+          $("#invent").show();
+        });
+
       	$('.button-collapse').sideNav({
             menuWidth: 228, // Default is 300
             edge: 'left', // Choose the horizontal origin
@@ -72,6 +92,20 @@
             closeOnConfirm: false
           },
           function(){
+            <?php
+              // Si se desea destruir la sesión completamente, borre también la cookie de sesión.
+              // Nota: ¡Esto destruirá la sesión, y no la información de la sesión!
+              // if (ini_get("session.use_cookies")) {
+              //     $params = session_get_cookie_params();
+              //     setcookie(session_name(), '', time() - 42000,
+              //         $params["path"], $params["domain"],
+              //         $params["secure"], $params["httponly"]
+              //     );
+              // }
+
+              // Finalmente, destruir la sesión.
+              // session_destroy();
+              ?>
             window.location="../../";
           });
         });
@@ -87,12 +121,18 @@
       <li><a href="#" data-activates="mobile-demo" class="button-collapse hov"><i class="material-icons">menu</i></a></li>
       </ul>
       <ul class="left hide-on-small-and-down">
-         <li class="press activa"><a href="#" class="hov"><b><i class="material-icons right">shopping_cart</i>Requisición</b></a></li>
-         <li class="press"><a href="#" class="hov"><b><i class="material-icons right">add_shopping_cart</i>Pedidos</b></a></li>
-         <li class="press"><a href="#" class="hov"><b><i class="material-icons right">assignment</i>Inventario</b></a></li>
+         <li class="press activa"><a href="#" id="requisiciones" class="hov"><b><i class="material-icons right">shopping_cart</i>Requisición</b></a></li>
+         <li class="press"><a href="#" id="pedidos" class="hov"><b><i class="material-icons right">add_shopping_cart</i>Pedidos</b></a></li>
+         <li class="press"><a href="#" id="inventarios" class="hov"><b><i class="material-icons right">assignment</i>Inventario</b></a></li>
          <li class="press"><a href="#" class="hov"><b><i class="material-icons right">store</i>Reportes</b></a></li>
       </ul>
       <ul class="right">
+        <li class="hide-on-small-and-down">
+          <div class="chip">
+            <img src="../../resources/img/mini.png" alt="Contact Person">
+            <?php echo $nombre." ".$ap." ".$am; ?>
+        </div>
+        </li>
         <li>
           <a href="" class="dropdown-button hov tooltipped" data-activates='dropdown1' data-position="bottom" data-delay="50" data-tooltip="Configuraciones"><i class="material-icons">settings</i></a>
         </li>
